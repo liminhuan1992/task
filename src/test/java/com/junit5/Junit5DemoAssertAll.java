@@ -1,7 +1,10 @@
 package com.junit5;
 
 import com.util.Calculator;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -9,8 +12,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * 使用junit5提供的assertAll进行断言，增加了脚本的容错性
  */
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class Junit5DemoAssertAll {
     @Test
+    @Order(1)
     public void addTest(){
         int result1 = Calculator.add(4,2);
         int result2 = Calculator.add(5,2);
