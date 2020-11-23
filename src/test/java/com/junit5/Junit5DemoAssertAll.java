@@ -1,10 +1,7 @@
 package com.junit5;
 
 import com.util.Calculator;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -27,6 +24,7 @@ public class Junit5DemoAssertAll {
     }
 
     @Test
+    @Order(2)
     public void subTractTest(){
         int result = Calculator.subtract(4,2);
         System.out.println(result);
@@ -34,6 +32,7 @@ public class Junit5DemoAssertAll {
     }
 
     @Test
+    @Order(3)
     public void multiplyTest(){
         int result = Calculator.multiply(4,2);
         System.out.println(result);
@@ -41,13 +40,20 @@ public class Junit5DemoAssertAll {
     }
 
     @Test
+    @Order(4)
     public void divideTest(){
         int result = Calculator.divide(4,2);
         System.out.println(result);
         assertEquals(2,result);
     }
 
+    @BeforeEach //在每个方法执行之前都执行
+    public void clear(){
+        Calculator.clear();
+    }
+
     @Test
+    @Order(6)
     public void countTest() throws InterruptedException {
         int result = Calculator.count(1);
         result = Calculator.count(1);
